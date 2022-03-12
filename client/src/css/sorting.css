@@ -1,0 +1,16 @@
+.sorting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sorting select{
+  margin-right: 5px;
+  border: 2px solid rgb(0, 172, 172);
+  color: rgb(0, 172, 172);
+}
+.sorting h2{
+  color: rgb(0, 172, 172);
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+header {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  background: white;
+}
+
+
+header nav{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header nav p{
+  font-weight: 600;
+  font-size: larger;
+  color: darkblue;
+  text-transform: uppercase;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+

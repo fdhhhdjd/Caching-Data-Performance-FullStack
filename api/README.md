@@ -1,17 +1,3 @@
-# Build a Restful API | Nodejs + Express + Mongodb 
-> + C.R.U.D, Filter, Paginate, Sort and Search API
-## Author: Dev A.T Viet Nam
-## Youtube: https://youtu.be/lda2psSYT9Q
-## Getting started: `npm install` -> `npm run dev`
-## 🔥 Donate
-> + 👉 Buy Me a Coffee . Thank You ! 💗 :
-> + 👉 https://www.buymeacoffee.com/QK1DkYS
-> + 👉 Paypal : https://paypal.me/tuananh251192
-
-### 👻👻VietNam: 
-> + 👉Vietcombank: 0061001044348 (LE TUAN ANH)
-> + 👉Momo : 0374481936
-
 I - Setup
   1. npm i express.    
     - A web framework for node

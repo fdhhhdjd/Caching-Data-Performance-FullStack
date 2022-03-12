@@ -1,6 +1,45 @@
-body {
+@font-face {
+  font-family: 'Barlow';
+  font-weight: normal;
+  src: url('./fonts/Barlow-Regular.woff2') format('woff2'),
+    url('./fonts/Barlow-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: medium;
+  src: url('./fonts/Barlow-Medium.woff2') format('woff2'),
+    url('./fonts/Barlow-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 600;
+  src: url('./fonts/Barlow-SemiBold.woff2') format('woff2'),
+    url('./fonts/Barlow-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: bold;
+  src: url('./fonts/Barlow-Bold.woff2') format('woff2'),
+    url('./fonts/Barlow-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 800;
+  src: url('./fonts/Barlow-ExtraBold.woff2') format('woff2'),
+    url('./fonts/Barlow-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Barlow';
+  font-weight: 900;
+  src: url('./fonts/Barlow-Black.woff2') format('woff2'),
+    url('./fonts/Barlow-Black.ttf') format('truetype');
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Barlow, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8,6 +47,52 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: Barlow, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+/* Header */
+@import url('./css/header.css');
+
+/* Products */
+@import url('./css/products.css');
+
+/* Product Card */
+@import url('./css/product_card.css');
+
+/* Product Info */
+@import url('./css/product_info.css');
+
+/* Pagination */
+@import url('./css/pagination.css');
+
+/* Modal */
+@import url('./css/modal.css');
+
+/* Search Form */
+@import url('./css/search_form.css');
+
+/* Product Form */
+@import url('./css/product_form.css');
+
+/* Filter Form */
+@import url('./css/filter_form.css');
+
+/* Sorting */
+@import url('./css/sorting.css');
+
+/* Loading */
+@import url('./css/loading.css');
+
+.btn-load_more{
+  background: white;
+  border: 2px solid green;
+  padding: 10px 20px;
+  margin: 10px auto;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  cursor: pointer;
 }
