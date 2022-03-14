@@ -1,5 +1,0 @@
-export const TYPES = {
-  SET_PAGE: 'SET_PAGE',
-  SET_SORT: 'SET_SORT',
-  SET_REFESH: 'SET_REFESH',
-}

@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ContextProvider } from "./context/store";
+import { ContextProvider } from "./Context/store";
 axios.defaults.baseURL = "http://localhost:5000/api";
 ReactDOM.render(
   <React.StrictMode>
