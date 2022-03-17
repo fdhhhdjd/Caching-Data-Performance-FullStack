@@ -1,31 +1,27 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const FilterForm = () => {
   const [price, setPrice] = useState("");
   const [filter, setFilter] = useState("lt");
   const navigate = useNavigate();
-
+  const inputRef = useRef();
+  const selectRef = useRef("lt");
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!price.trim()) return;
-
-    return navigate(`/product/price/${filter}/${price}`);
+    const value = inputRef.current.value;
+    const option = selectRef.current.value;
+    if (!value.trim()) return;
+    return navigate(`/filter/${option}/${value}`);
   };
 
   return (
     <div className="filter_form" title="Enter to filter">
       <form onSubmit={handleSubmit}>
         <div>
-          <input
-            type="text"
-            value={price}
-            placeholder="0"
-            required
-            onChange={(e) => setPrice(e.target.value)}
-          />
+          <input type="text" placeholder="0" required ref={inputRef} />
 
-          <select onChange={(e) => setFilter(e.target.value)}>
+          <select ref={selectRef}>
             <option value="lt" title="lesser than">
               LT
             </option>

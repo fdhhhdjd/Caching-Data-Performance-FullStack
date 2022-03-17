@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal, SearchForm, FilterForm } from "../Import/Index";
+import { Modal, SearchForm, FilterForm, ProductForm } from "../Import/Index";
 
 const Header = () => {
   const [openProd, setOpenProd] = useState(false);
@@ -27,7 +27,7 @@ const Header = () => {
       {/* -------- Create Product --------- */}
       {openProd && (
         <Modal titleTxt="Create Product" setOpen={setOpenProd}>
-          {/* <ProductForm btnTxt="Add" /> */}
+          <ProductForm btnTxt="Add" />
         </Modal>
       )}
 

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, Products } from "../Import/Index";
-const Search = () => {
-  const { value } = useParams();
+const Filter = () => {
+  const { option, value } = useParams();
   const [products, setProducts] = useState([]);
-  const { data, loading, error } = useQuery(`/products?search=${value}`);
-
+  const { data, loading, error } = useQuery(
+    `products?price[${option}]=${value}`
+  );
   useEffect(() => {
     if (data?.products) setProducts(data.products);
   }, [data?.products]);
@@ -16,4 +17,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Filter;
