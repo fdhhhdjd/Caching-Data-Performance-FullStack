@@ -1,31 +1,24 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
-const Pagination = ({ totalPages, page }) => {
-  const newArray = [...Array(totalPages)].map((_, i) => i + 1);
-  const navigate = useNavigate();
-  const isActive = (index) => {
-    if (index === page) {
-      return "active";
-    }
-  };
-  const prev = () => {
-    const newPage = Math.max(page - 1, 1);
-
-    navigate(`?page=${newPage}`);
-  };
-  const next = () => {
-    const newPage = Math.min(page + 1, totalPages);
-
-    navigate(`?page=${newPage}`);
-  };
-  const jump = (num) => {
-    navigate(`?page=${num}`);
-  };
+import React, { useRef } from "react";
+import { usePagination } from "../Import/Index";
+const Pagination = React.memo(({ totalPages, page, sort }) => {
+  const { firstArr, lastArr, next, jump, prev, isActive } =
+    usePagination(totalPages);
+  const ref = useRef(0);
   return (
     <div className="pagination">
+      <h1>render:{ref.current++}</h1>
       <button onClick={prev}>&laquo;</button>
-      {newArray.map((item, key) => (
+      {firstArr.map((item, key) => (
+        <button
+          key={key}
+          className={`${isActive(item)}`}
+          onClick={() => jump(item)}
+        >
+          {item}
+        </button>
+      ))}
+      {lastArr.length > 0 && <button>...</button>}
+      {lastArr.map((item, key) => (
         <button
           key={key}
           className={`${isActive(item)}`}
@@ -37,6 +30,6 @@ const Pagination = ({ totalPages, page }) => {
       <button onClick={next}>&raquo;</button>
     </div>
   );
-};
+});
 
 export default Pagination;

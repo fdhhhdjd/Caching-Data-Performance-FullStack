@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal } from "../Import/Index";
+import { Modal, SearchForm, FilterForm } from "../Import/Index";
 
 const Header = () => {
   const [openProd, setOpenProd] = useState(false);
@@ -20,7 +20,7 @@ const Header = () => {
       {/* -------- Search --------- */}
       {openSearch && (
         <Modal titleTxt="Search" setOpen={setOpenSearch}>
-          {/* <SearchForm /> */}
+          <SearchForm />
         </Modal>
       )}
 
@@ -34,7 +34,7 @@ const Header = () => {
       {/* -------- Filter --------- */}
       {openFilter && (
         <Modal titleTxt="Filter" setOpen={setOpenFilter}>
-          {/* <FilterForm /> */}
+          <FilterForm />
         </Modal>
       )}
     </header>

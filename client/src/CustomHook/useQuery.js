@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
 const useQuery = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);

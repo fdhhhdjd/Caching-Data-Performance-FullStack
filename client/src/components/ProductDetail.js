@@ -6,7 +6,6 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
   const { data, loading, error } = useQuery(`/products/${id}`);
-
   return (
     <main>
       <ProductInfo product={data} loading={loading} error={error} />

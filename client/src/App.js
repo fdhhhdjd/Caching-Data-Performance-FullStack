@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Header, ProductDetail } from "./Import/Index";
+import { Home, Header, ProductDetail, Search } from "./Import/Index";
 const App = () => {
   return (
     <>
@@ -8,6 +8,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/search/:value" element={<Search />} />
       </Routes>
     </>
   );

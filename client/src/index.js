@@ -9,13 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { ContextProvider } from "./Context/store";
 axios.defaults.baseURL = "http://localhost:5000/api";
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ContextProvider>
-        <App />
-        <ToastContainer />
-      </ContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <BrowserRouter>
+    <ContextProvider>
+      <App />
+      <ToastContainer />
+    </ContextProvider>
+  </BrowserRouter>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
