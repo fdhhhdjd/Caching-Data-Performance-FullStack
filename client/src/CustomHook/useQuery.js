@@ -18,44 +18,6 @@ const useQuery = (url, opt = DEFAULT_OPTION) => {
       return (cache.current = {});
     }
   }, [cache, url]);
-  const fetchData = useCallback(
-    async (url, here) => {
-      if (!cache.current[url]) setLoading(true);
-      try {
-        const res = await axios.get(url);
-        console.log("let go");
-        if (!here) return;
-        setData(res.data);
-        if (option.saveCache) {
-          cache.current[url] = res.data;
-        }
-      } catch (err) {
-        if (!here) return;
-        setError(err.response.data.msg);
-        toast.error(err.response.data.msg);
-      } finally {
-        if (!here) return;
-        setLoading(false);
-      }
-      // axios
-      //   .get(url)
-      //   .then((response) => {
-      //     if (!here) return;
-      //     setData(response.data);
-      //     cache.current[url] = response.data;
-      //   })
-      //   .catch((error) => {
-      //     if (!here) return;
-      //     setError(error.response.data.msg);
-      //   })
-      //   .finally(() => {
-      //     if (!here) return;
-      //     setLoading(false);
-      //   });
-      clearCache();
-    },
-    [cache, option.saveCache]
-  );
   useEffect(() => {
     let here = true; //Chống rò rĩ bộ nhớ
     if (cache.current[url]) {
@@ -64,7 +26,22 @@ const useQuery = (url, opt = DEFAULT_OPTION) => {
     }
     const delayDebounce = setTimeout(
       () => {
-        fetchData(url, here);
+        if (!cache.current[url]) setLoading(true);
+        axios
+          .get(url)
+          .then((response) => {
+            if (!here) return;
+            setData(response.data);
+            cache.current[url] = response.data;
+          })
+          .catch((error) => {
+            if (!here) return;
+            setError(error.response.data.msg);
+          })
+          .finally(() => {
+            if (!here) return;
+            setLoading(false);
+          });
       },
       cache.current[url] ? option.refetchInterval : 0
     );
@@ -73,14 +50,7 @@ const useQuery = (url, opt = DEFAULT_OPTION) => {
       here = false;
       clearTimeout(delayDebounce);
     };
-  }, [
-    url,
-    cache,
-    clearCache,
-    fetchData,
-    option.refetching,
-    option.refetchInterval,
-  ]);
+  }, [url, cache, clearCache, option.refetching, option.refetchInterval]);
   return { data, loading, error };
 };
 

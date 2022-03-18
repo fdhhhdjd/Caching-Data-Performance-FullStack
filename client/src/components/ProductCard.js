@@ -14,7 +14,6 @@ const ProductCard = ({ product }) => {
   const handleDeleteProduct = (id) => {
     if (window.confirm("Do you want to delete this ?")) {
       mutate(() => deleteProduct(id));
-      axios.delete(`products/${id}`).then((res) => console.log(res));
     }
   };
 
