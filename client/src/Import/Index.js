@@ -1,4 +1,5 @@
 import { useMyContext } from "../Context/store";
+import { createProduct, updateProduct, deleteProduct } from "../utils/Api";
 export { default as Home } from "../page/Home";
 export { default as Header } from "../page/Header";
 export { default as Search } from "../page/Search";
@@ -17,4 +18,4 @@ export { default as Sorting } from "../Components/Sorting";
 export { default as SearchForm } from "../Components/SearchForm";
 export { default as FilterForm } from "../Components/FilterForm";
 export { default as ProductForm } from "../Components/ProductForm";
-export { useMyContext };
+export { useMyContext, createProduct, updateProduct, deleteProduct };

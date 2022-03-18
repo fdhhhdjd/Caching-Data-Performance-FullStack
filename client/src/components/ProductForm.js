@@ -1,15 +1,9 @@
 import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
-import { useMutation } from "../Import/Index";
+import React, { useRef } from "react";
+import { useMutation, createProduct, updateProduct } from "../Import/Index";
 const ProductForm = ({ btnTxt, data }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [id, setId] = useState("");
   const titleRef = useRef();
-  const { loading } = useMutation();
+  const { mutate, loading } = useMutation();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -18,8 +12,27 @@ const ProductForm = ({ btnTxt, data }) => {
       if (!child.name) return obj;
       return { ...obj, [child.name]: child.value };
     }, {});
-    axios.post(`/products`, newData).then((res) => console.log(res));
-    console.log(newData);
+    if (data) {
+      const result = ShallowEqual(newData, data);
+      console.log(result);
+      if (result) return;
+      mutate(() => updateProduct({ id: data._id, newData }));
+
+      // axios
+      //   .put(`products/${data._id}`, newData)
+      //   .then((res) => console.log(res));
+    } else {
+      mutate(() => createProduct(newData));
+    }
+  };
+  const ShallowEqual = (obj1, obj2) => {
+    const keys = Object.keys(obj1);
+    for (let key of keys) {
+      if (obj1[key] !== obj2[key]) {
+        return false;
+      }
+      return true;
+    }
   };
 
   return (
@@ -31,35 +44,37 @@ const ProductForm = ({ btnTxt, data }) => {
             placeholder="Product title"
             required
             name="title"
+            defaultValue={data?.title}
           />
           <input
             type="text"
             placeholder="Product description"
             required
             name="description"
+            defaultValue={data?.description}
           />
           <input
             type="text"
-            value={price}
             name="price"
             placeholder="Product price"
             required
-            onChange={(e) => setPrice(e.target.value)}
+            defaultValue={data?.price}
           />
           <input
             type="text"
             placeholder="Product category"
             name="category"
             required
+            defaultValue={data?.category}
           />
           <input
             type="text"
             placeholder="Product image"
             name="image"
             required
+            defaultValue={data?.image}
           />
-
-          <button>{loading ? "Loading..." : btnTxt}</button>
+          <button disabled={loading}>{loading ? "Loading..." : btnTxt}</button>
         </form>
       </div>
     </>

@@ -1,11 +1,21 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Modal } from "../Import/Index";
+import {
+  Modal,
+  ProductForm,
+  useMutation,
+  deleteProduct,
+} from "../Import/Index";
 const ProductCard = ({ product }) => {
   const [openModal, setOpenModal] = useState(false);
-  // const { refresh, setRefresh } = useContext(Store)
-
-  const handleDeleteProduct = (id) => {};
+  const { mutate, loading } = useMutation();
+  const handleDeleteProduct = (id) => {
+    if (window.confirm("Do you want to delete this ?")) {
+      mutate(() => deleteProduct(id));
+      axios.delete(`products/${id}`).then((res) => console.log(res));
+    }
+  };
   return (
     <>
       <div className="card">
@@ -27,8 +37,9 @@ const ProductCard = ({ product }) => {
             <button
               className="btn_delete"
               onClick={() => handleDeleteProduct(product._id)}
+              disabled={loading}
             >
-              Delete
+              {loading ? "...Loading" : "Delete"}
             </button>
           </div>
         </div>
@@ -36,7 +47,7 @@ const ProductCard = ({ product }) => {
         <div>
           {openModal && (
             <Modal titleTxt="Update Product" setOpen={setOpenModal}>
-              {/* <ProductForm btnTxt="Update" data={product} /> */}
+              <ProductForm btnTxt="Update" data={product} />
             </Modal>
           )}
         </div>

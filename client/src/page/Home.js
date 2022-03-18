@@ -3,16 +3,20 @@ import {
   Pagination,
   Products,
   Sorting,
-  useQuery,
   useMyContext,
+  useQuery,
 } from "../Import/Index";
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [limit, setLimit] = useState(5);
   const ref = useRef(0);
-  const { page, sort } = useMyContext();
+  const { page, sort, refetching } = useMyContext();
   const { data, loading, error } = useQuery(
-    `/products?limit=${limit}&page=${page}&sort=${sort}`
+    `/products?limit=${limit}&page=${page}&sort=${sort}`,
+    {
+      saveCache: true,
+      refetching,
+    }
   );
   useEffect(() => {
     if (data?.products) setProducts(data.products);
@@ -20,7 +24,7 @@ const Home = () => {
   const totalPages = useMemo(() => {
     if (!data?.count) return 0;
     return Math.ceil(data.count / limit);
-  }, [data?.count]);
+  }, [data?.count, limit]);
 
   return (
     <>
