@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  deleteProduct,
   Modal,
   ProductForm,
   useMutation,
-  deleteProduct,
 } from "../Import/Index";
+import LazyLoadImg from "./LazyLoadImg";
 const ProductCard = ({ product }) => {
   const [openModal, setOpenModal] = useState(false);
   const { mutate, loading } = useMutation();
@@ -16,11 +17,12 @@ const ProductCard = ({ product }) => {
       axios.delete(`products/${id}`).then((res) => console.log(res));
     }
   };
+
   return (
     <>
       <div className="card">
-        <img src={product.image} alt={product.image} />
-
+        {/* <img alt={product.image} ref={imgRef} /> */}
+        <LazyLoadImg url={product.image} />
         <div className="box">
           <h3>
             <Link to={`/products/${product._id}`}>

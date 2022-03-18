@@ -1,7 +1,7 @@
 import React from "react";
 import { useCustomRouter, useMyContext } from "../Import/Index";
-const Sorting = React.memo(({ calback }) => {
-  const { page, sort } = useMyContext();
+const Sorting = React.memo(({ calback, page }) => {
+  const { sort } = useMyContext();
   const { pushQuery } = useCustomRouter();
   const handleSort = (e) => {
     const { value } = e.target;

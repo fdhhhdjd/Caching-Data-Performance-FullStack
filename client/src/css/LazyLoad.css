@@ -1,0 +1,13 @@
+.lazy-load{
+    width: 100%;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+    transform:scale(0.7);
+    transition:0.5s ease-in-out;
+  }
+
+  .lazy-load.active{
+    transform: scale(1);
+  }
+  

@@ -8,7 +8,7 @@ import {
 } from "../Import/Index";
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [limit, setLimit] = useState(5);
+  const [limit] = useState(100);
   const ref = useRef(0);
   const { page, sort, refetching } = useMyContext();
   const { data, loading, error } = useQuery(
@@ -30,7 +30,7 @@ const Home = () => {
     <>
       <main>
         <h1>render:{ref.current++}</h1>
-        <Sorting />
+        <Sorting page={page} />
         <Products data={products} loading={loading} error={error} />
         <Pagination totalPages={totalPages} />
       </main>
