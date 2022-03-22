@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const ref = useRef(0);
   const inputRef = useRef();

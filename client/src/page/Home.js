@@ -8,7 +8,7 @@ import {
 } from "../Import/Index";
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [limit] = useState(100);
+  const [limit] = useState(5);
   const ref = useRef(0);
   const { page, sort, refetching } = useMyContext();
   const { data, loading, error } = useQuery(

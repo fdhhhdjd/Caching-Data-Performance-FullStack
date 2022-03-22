@@ -7,7 +7,7 @@ import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ContextProvider } from "./Context/store";
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = "https://cachepeformence.herokuapp.com/api";
 ReactDOM.render(
   // <React.StrictMode>
   <BrowserRouter>
